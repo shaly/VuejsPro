@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insert title here</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app">
+        你好，vuejs
+        {{content}}
+    </div>
+
+    <script>
+        //mvvm   模板，数据，模型
+        var appData={content:"Jane"};
+        var app=new Vue({
+            el:"#app",//数据来源：1.通过#app；2.或者document.getElementById("app")
+            data:appData
+        })
+    </script>
+
+</body>
+</html>
