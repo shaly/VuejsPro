@@ -1,0 +1,13 @@
+安装bower
+1.打开cmd
+2.输入 npm install -g bower
+3.输入 bower -version 如果出现版本号，那么就是安装成功
+
+
+4.查看包信息：比如查看jquery的信息：bower info jquery
+5.下载包指定版本：比如下载jquery:bower install jquery#1.12.4
+6.查看bower所有安装的包：bower list
+7.下载包不指定版本则是最新版本：bower install vue
+8.使用vue编写data01.html
+    右键Open In Other Browers
+9.vue值绑定与值修改

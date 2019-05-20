@@ -1,0 +1,20 @@
+{
+  "name": "VuejsPro",
+  "homepage": "https://github.com/shaly/VuejsPro",
+  "authors": [
+    "shaly <283199611@qq.com>"
+  ],
+  "description": "我是一个vuepro",
+  "main": "app.js",
+  "keywords": [
+    "aaa"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

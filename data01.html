@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{title}}
+    </div>
+
+
+    <script>
+        //var mydata={title:"我是Jane，在学习..."}
+
+        var app=new Vue({
+            el:"#app",
+            data:{
+                title:"我是Jane，在学习..."
+            }
+            //data:mydata
+        });
+      console.log(app)  ;
+      setTimeout(()=>{
+          //三种修改方式
+        app.title="两秒后修改了";
+        app.$data.title="两秒后修改了";
+        //mydata.title="改法3";
+      },2000)
+    </script>
+
+</body>
+</html>
