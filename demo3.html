@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insert title here</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="demo2">
+        <ul>
+            <li v-for="(book,index) in books">{{index+1}}:{{book.name}}</li>
+        </ul>
+    </div>
+    <div id="demo3">
+        <ul>
+            <li v-for="(book,index) in books">{{index+1}}:{{book.name}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:"#demo2",
+            data:{
+                title:"Jane's book",
+                books:[{name:"vuejs实战与开发"}
+                ,{name:"javaScript"}
+                ,{name:"java"}
+                ]
+            }
+        })
+        var app=new Vue({
+            el:"#demo3",
+            data:{
+                title:"Jane's book",
+                books:[{name:"vuejs实战与开发"}
+                ,{name:"javaScript"}
+                ,{name:"java"}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
