@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="good in goods"><span>{{good.name}}</span>:
+                <span>{{good.price | addPrefix("$")}}</span>
+                <!--自定义前缀 <span>{{good.price | addPrefix("$")}}</span> -->
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                goods:[
+                    {name:"袜子",price:12.58},
+                    {name:"鞋子",price:1112.58},
+                    {name:"裤子",price:212.58},
+                    {name:"裙子",price:1112.00},
+                    {name:"衣服",price:1112.58},
+                    {name:"帽子",price:52.58}
+                ]
+            },
+            filters:{//过滤器
+                addPrefix:function(value,prfix){
+                    return (prfix||"￥")+value;
+                }
+            }
+
+        })
+    
+    </script>
+</body>
+</html>
