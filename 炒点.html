@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap-4.0.0-dist/bootstrap.css">
+</head>
+<body>
+    <div id="app">
+        <jane-comp></jane-comp>
+        <!-- 炒点方式1 -->
+        <!-- 
+        <div class='header'>头部</div>
+        <div class='banner'>头部1</div>
+        <div class='content'>头部2</div>
+        <div class='footer'>头部3</div> 
+        -->
+
+        <!-- 炒点方式2 -->
+        <h1 slot='header'>头部</h1>
+        <h1 slot='banner'>头部1</h1>
+        <h1 slot='content'>头部2</h1>
+        <h1 slot='footer'>头部3</h1> 
+        
+    </div>
+    <script>
+        //总线控制 bus
+        var bus=new Vue();
+        Vue.component("jane-comp",{
+            //非炒点
+            // template:"<div><div class='header'>头部</div>"
+            // +"<div class='banner'>头部1</div>"
+            // +"<div class='content'>头部2</div>"
+            // +"<div class='footer'>头部3</div></div>"
+            
+            //炒点方式1
+            // template:"<div><slot></slot></div>"
+            
+            //炒点方式2
+            template:"<div><div class='header'><slot name='header'></slot></div>"
+            +"<div class='banner'><slot name='banner'></slot></div>"
+            +"<div class='content'><slot name='content'></slot></div>"
+            +"<div class='footer'><slot name='footer'></slot></div></div>"
+        });
+        var app=new Vue({
+            el:"#app",
+            data:{
+                total:0
+            }
+        });
+    </script>
+</body>
+</html>
