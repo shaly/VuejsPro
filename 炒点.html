@@ -21,11 +21,13 @@
         -->
 
         <!-- 炒点方式2 -->
-        <h1 slot='header'>头部</h1>
+        <template slot="header" scope="props">
+            <h1>我是头部---{{props.msg}}</h1>
+        </template>
+        <h1 slot='footer'>头部3</h1> 
         <h1>没指定的值都在最下面1</h1>
         <h1 slot='banner'>头部1</h1>
         <h1 slot='content'>头部2</h1>
-        <h1 slot='footer'>头部3</h1> 
         <h1>没指定的值都在最下面2</h1>
         <h1>没指定的值都在最下面3</h1>
     </jane-comp>
@@ -44,7 +46,7 @@
             // template:"<div><slot></slot></div>"
             
             //炒点方式2
-            template:"<div><div class='header'><slot name='header'></slot></div>"
+            template:"<div><div class='header'><slot name='header' msg='我是一个来自slot的属性'></slot></div>"
             +"<div class='banner'><slot name='banner'></slot></div>"
             +"<div class='content'><slot name='content'></slot></div>"
             +"<div class='footer'><slot name='footer'></slot></div><slot/></div>"
