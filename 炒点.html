@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="app">
-        <jane-comp></jane-comp>
+        <jane-comp>
         <!-- 炒点方式1 -->
         <!-- 
         <div class='header'>头部</div>
@@ -22,10 +22,13 @@
 
         <!-- 炒点方式2 -->
         <h1 slot='header'>头部</h1>
+        <h1>没指定的值都在最下面1</h1>
         <h1 slot='banner'>头部1</h1>
         <h1 slot='content'>头部2</h1>
         <h1 slot='footer'>头部3</h1> 
-        
+        <h1>没指定的值都在最下面2</h1>
+        <h1>没指定的值都在最下面3</h1>
+    </jane-comp>
     </div>
     <script>
         //总线控制 bus
@@ -44,7 +47,7 @@
             template:"<div><div class='header'><slot name='header'></slot></div>"
             +"<div class='banner'><slot name='banner'></slot></div>"
             +"<div class='content'><slot name='content'></slot></div>"
-            +"<div class='footer'><slot name='footer'></slot></div></div>"
+            +"<div class='footer'><slot name='footer'></slot></div><slot/></div>"
         });
         var app=new Vue({
             el:"#app",
