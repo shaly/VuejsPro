@@ -32,6 +32,15 @@
         <h1>没指定的值都在最下面3</h1>
     </jane-comp>
     </div>
+    <script type="text/x-template" id="mytemplate">
+        <div>
+            <div class='header'><slot name='header' msg='我是一个来自slot的属性'></slot></div>
+            <div class='banner'><slot name='banner'></slot></div>
+            <div class='content'><slot name='content'></slot></div>
+            <div class='footer'><slot name='footer'></slot></div>
+            <slot/>
+        </div>
+    </script>
     <script>
         //总线控制 bus
         var bus=new Vue();
@@ -46,10 +55,13 @@
             // template:"<div><slot></slot></div>"
             
             //炒点方式2
-            template:"<div><div class='header'><slot name='header' msg='我是一个来自slot的属性'></slot></div>"
-            +"<div class='banner'><slot name='banner'></slot></div>"
-            +"<div class='content'><slot name='content'></slot></div>"
-            +"<div class='footer'><slot name='footer'></slot></div><slot/></div>"
+            // template:"<div><div class='header'><slot name='header' msg='我是一个来自slot的属性'></slot></div>"
+            // +"<div class='banner'><slot name='banner'></slot></div>"
+            // +"<div class='content'><slot name='content'></slot></div>"
+            // +"<div class='footer'><slot name='footer'></slot></div><slot/></div>"
+
+            //炒点方式3(注意：当使用gulp grunt webpaack ---->构建时产生.vue文件，但会忽略这种方式)
+            template:"#mytemplate"
         });
         var app=new Vue({
             el:"#app",
