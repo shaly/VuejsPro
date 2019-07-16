@@ -8,46 +8,42 @@
     <script src="js/vue.js"></script>
 </head>
 <body>
-    <div id="app">
-       total:{{total}}
-       <jane-comp></jane-comp>
+    <div id="app">   
+        <h1>{{message}}</h1>  
+       <jane-message ref="childScope"></jane-message>
+       <button @click="getData">获取子组件数据</button>
     </div>
     <script>
         //总线控制 bus
         var bus=new Vue();
-        Vue.component("jane-comp",{
-            template:"<div><button @click='add'>+</button><button @click='minu'>-</button></div>",
-            methods:{
-                add:function(){
-                    this.counter++;
-                    bus.$emit("getTotal",this.counter);//触发器 trigger
-                },
-                minu:function(){
-                    this.counter--;
-                    bus.$emit("getTotal",this.counter);
-                }
-            },
+        Vue.component("jane-message",{
+            template:"<div>{{message}}<button @click='getParent'>获取父组件数据</button></div>",
             data:function(){
                 return {
-                    counter:0
+                    message:"我是子组件的数据",
+                    name:"Jane",
+                    age:18
+                }
+            },
+            methods:{
+                getParent:function(){
+                    var parentData=this.$parent;
+                    this.message=parentData.message;
                 }
             }
-        })
-
+        });
         var app=new Vue({
             el:"#app",
             data:{
-                total:0                            
+                message:"我是父组件的数据"                     
             },
-            //自定义一个事件
-            mounted:function(){
-                var that=this;
-                bus.$on("getTotal",function(total){
-                    //this指向bus
-                    that.total=total;
-                });
+            methods:{
+                getData:function(){
+                    var childData=this.$refs.childScope;
+                    this.message=childData.message;
+                }
             }
-        })
+        });
     
     </script>
 </body>
