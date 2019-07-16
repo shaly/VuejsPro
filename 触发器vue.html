@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap-4.0.0-dist/bootstrap.css">
+</head>
+<body>
+    <div id="app">
+        {{total}}
+        <!-- 声明所定义的函数所指向的方法 -->
+        <jane-comp @addcounter="getTotal" @minucounter="getTotal"></jane-comp>
+    </div>
+    <script>
+        //总线控制 bus
+        var bus=new Vue();
+        Vue.component("jane-comp",{
+            template:"<div>"
+            +"<button @click='add'>+</button>"
+            +"<button @click='minu'>-</button>"
+            +"</div>",
+            data:function(){
+                return {
+                    counter:0
+                }
+            },
+            methods:{
+                add:function(){
+                    this.counter++;
+                    this.$emit("addcounter",this.counter);//定义函数
+                },
+                minu:function(){
+                    this.counter--;
+                    this.$emit("minucounter",this.counter);
+                }
+            }
+        });
+        var app=new Vue({
+            el:"#app",
+            data:{
+                total:0
+            },
+            methods:{
+                getTotal:function(total){
+                    this.total=total;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
