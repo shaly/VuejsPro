@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       total:{{total}}
+       <jane-comp></jane-comp>
+    </div>
+    <script>
+        //总线控制 bus
+        var bus=new Vue();
+        Vue.component("jane-comp",{
+            template:"<div><button @click='add'>+</button><button @click='minu'>-</button></div>",
+            methods:{
+                add:function(){
+                    this.counter++;
+                    bus.$emit("getTotal",this.counter);//触发器 trigger
+                },
+                minu:function(){
+                    this.counter--;
+                    bus.$emit("getTotal",this.counter);
+                }
+            },
+            data:function(){
+                return {
+                    counter:0
+                }
+            }
+        })
+
+        var app=new Vue({
+            el:"#app",
+            data:{
+                total:0                            
+            },
+            //自定义一个事件
+            mounted:function(){
+                var that=this;
+                bus.$on("getTotal",function(total){
+                    //this指向bus
+                    that.total=total;
+                });
+            }
+        })
+    
+    </script>
+</body>
+</html>
